@@ -18,5 +18,5 @@ Compute the grade for a student;
 Compute the grade for a student, where the lowest score for a given category is dropped.
 
 USER GUIDE:
-To start, make sure you have MySQL downloaded
-Run the script so create the tables and insert the data
+- To start, make sure you have MySQL downloaded
+- Run the script to create the tables and insert the data
