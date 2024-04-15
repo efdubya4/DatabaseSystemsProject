@@ -339,9 +339,8 @@ JOIN scores sc ON s.student_id = sc.student_id
 JOIN assignments a ON sc.assignment_id = a.assignment_id
 JOIN categories cat ON a.category_id = cat.category_id
 JOIN courses c ON cat.course_id = c.course_id
-WHERE c.course_id = 1
+WHERE c.course_id = 1 -- CHANGE to test different course
 ORDER BY s.student_id, a.assignment_id;
-
 -- Calculate and insert grades into the grades table
 INSERT INTO grades (student_id, course_id, score)
 SELECT s.student_id, cat.course_id, 
@@ -369,21 +368,44 @@ SET scores.score = scores.score + 2
 WHERE students.last_name LIKE '%Q%' AND scores.assignment_id = 1;
 
 
- -- COMPUTE GRADE FOR STUDENTS + DROP THE LOWEST SCORES.     DOESNT WORKX
--- SELECT s.student_id, s.first_name, s.last_name, g.course_id,
---       SUM(sc.score * a.weight / 100) AS total_score
--- FROM students s
--- JOIN (
--- 		SELECT sc.*, a.category_id, a.weight,
---           ROW_NUMBER() OVER (PARTITION BY a.category_id, sc.student_id ORDER BY sc.score DESC) AS row_num
---    FROM scores sc
---    JOIN assignments a ON sc.assignment_id = a.assignment_id
--- ) sc ON s.student_id = sc.student_id
--- JOIN categories cat ON sc.category_id = cat.category_id
--- JOIN grades g ON s.student_id = g.student_id AND g.course_id = cat.course_id
--- WHERE sc.row_num > 1  -- Exclude the lowest score for each category
--- GROUP BY s.student_id, s.first_name, s.last_name, g.course_id;
+ -- COMPUTE GRADE FOR STUDENTS + DROP THE LOWEST SCORES.
+DELIMITER //
 
+CREATE PROCEDURE ComputeAndDropLowestScores()
+BEGIN
+    -- Create a temporary table to store the row numbers of the lowest scores for each category
+    CREATE TEMPORARY TABLE LowestScores (
+        category_id INT,
+        student_id INT,
+        row_num INT
+    );
+
+    -- Insert the row numbers of the lowest scores into the temporary table
+    INSERT INTO LowestScores (category_id, student_id, row_num)
+    SELECT a.category_id, sc.student_id,
+           ROW_NUMBER() OVER (PARTITION BY a.category_id, sc.student_id ORDER BY sc.score ASC) AS row_num
+    FROM scores sc
+    JOIN assignments a ON sc.assignment_id = a.assignment_id
+    JOIN categories cat ON a.category_id = cat.category_id;
+
+    -- Compute grades for students, excluding the lowest scores for each category
+    SELECT s.student_id, s.first_name, s.last_name, cat.course_id,
+           SUM(sc.score * a.weight / 100) AS total_score
+    FROM students s
+    JOIN scores sc ON s.student_id = sc.student_id
+    JOIN assignments a ON sc.assignment_id = a.assignment_id
+    JOIN categories cat ON a.category_id = cat.category_id
+    JOIN grades g ON s.student_id = g.student_id AND cat.course_id = g.course_id
+    LEFT JOIN LowestScores ls ON a.category_id = ls.category_id AND sc.student_id = ls.student_id
+    WHERE ls.row_num IS NULL  -- Exclude the lowest score for each category
+    GROUP BY s.student_id, s.first_name, s.last_name, cat.course_id;
+
+    -- Drop the temporary table
+    DROP TEMPORARY TABLE LowestScores;
+END//
+
+DELIMITER ;
+ 
 
 
 
