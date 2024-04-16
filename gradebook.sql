@@ -28,6 +28,7 @@ FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`)
 CREATE TABLE `assignments`(
 `assignment_id` INT PRIMARY KEY AUTO_INCREMENT, 
 `category_id` INT, 
+`course_id` INT,
 `name` VARCHAR(50),
 `weight` DECIMAL(5, 2),
 FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) 
@@ -85,52 +86,52 @@ INSERT INTO `categories` (`course_id`, `name`, `weight`) VALUES (5, 'Homework', 
 INSERT INTO `categories` (`course_id`, `name`, `weight`) VALUES (5, 'Tests', 50);
 INSERT INTO `categories` (`course_id`, `name`, `weight`) VALUES (5, 'Projects', 20);
 
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (1, 'Participation 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (1, 'Participation 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (2, 'HW 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (2, 'HW 2', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (3, 'Test 1', 25);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (3, 'Test 2', 25);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (4, 'Project 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (4, 'Project 2', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (5, 'Participation 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (6, 'HW 1', 20);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (7, 'Test 1', 50);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (8, 'Project 1', 20);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (9, 'Participation 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (9, 'Participation 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (10, 'HW 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (10, 'HW 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (10, 'HW 3', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (10, 'HW 4', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (11, 'Test 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (11, 'Test 2', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (11, 'Test 3', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (11, 'Test 4', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (11, 'Test 5', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (12, 'Project 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (12, 'Project 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (12, 'Project 3', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (12, 'Project 4', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (13, 'Participation 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (14, 'HW 1', 4);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (14, 'HW 2', 4);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (14, 'HW 3', 4);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (14, 'HW 4', 4);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (14, 'HW 5', 4);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (15, 'Test 1', 25);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (15, 'Test 2', 25);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (16, 'Project 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (16, 'Project 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (16, 'Project 3', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (16, 'Project 4', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (17, 'Participation 1', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (17, 'Participation 2', 5);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (18, 'HW 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (18, 'HW 2', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (19, 'Test 1', 50);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (20, 'Project 1', 10);
-INSERT INTO `assignments` (`category_id`, `name`, `weight`) VALUES (20, 'Project 2', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (1, 1, 'Participation 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`,`name`, `weight`) VALUES (1, 1, 'Participation 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (2, 1, 'HW 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (2, 1, 'HW 2', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (3, 1,  'Test 1', 25);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (3, 1,  'Test 2', 25);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (4, 1, 'Project 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (4, 1, 'Project 2', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (5, 2, 'Participation 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (6, 2, 'HW 1', 20);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (7, 2, 'Test 1', 50);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (8, 2, 'Project 1', 20);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (9, 3, 'Participation 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (9, 3, 'Participation 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (10, 3, 'HW 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (10, 3, 'HW 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (10, 3, 'HW 3', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (10, 3, 'HW 4', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (11, 3, 'Test 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (11, 3, 'Test 2', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (11, 3, 'Test 3', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (11, 3, 'Test 4', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (11, 3, 'Test 5', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (12, 3, 'Project 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (12, 3, 'Project 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (12, 3, 'Project 3', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (12, 3, 'Project 4', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (13, 4, 'Participation 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (14, 4 ,'HW 1', 4);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (14, 4, 'HW 2', 4);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (14, 4, 'HW 3', 4);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (14, 4, 'HW 4', 4);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (14, 4, 'HW 5', 4);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (15, 4, 'Test 1', 25);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (15, 4, 'Test 2', 25);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (16, 4, 'Project 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (16, 4, 'Project 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (16, 4, 'Project 3', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (16, 4, 'Project 4', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (17, 5, 'Participation 1', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (17, 5, 'Participation 2', 5);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (18, 5, 'HW 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (18, 5, 'HW 2', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (19, 5, 'Test 1', 50);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (20, 5, 'Project 1', 10);
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (20, 5, 'Project 2', 10);
 
 -- student 1 scores
 INSERT INTO `scores` (`student_id`, `assignment_id`, `score`) VALUES (1, 1, 69);
@@ -317,13 +318,12 @@ FROM `scores`
 WHERE `assignment_id` = 1;
 
 -- List all students for a given course (course id=1)
-SELECT s.student_id, s.first_name, s.last_name
+SELECT DISTINCT s.student_id, s.first_name, s.last_name
 FROM students s
 JOIN grades g ON s.student_id = g.student_id
 JOIN courses c ON g.course_id = c.course_id
 -- List all students for a given course
 WHERE c.course_id = 1; -- -- WHERE c.course_id = <course_id>; --
-
 
 -- LIST STUDENTS AND SCORES --
 SELECT s.student_id, s.first_name, s.last_name, a.assignment_id, a.name AS assignment_name, sc.score
@@ -332,9 +332,13 @@ JOIN scores sc ON s.student_id = sc.student_id
 JOIN assignments a ON sc.assignment_id = a.assignment_id
 JOIN categories cat ON a.category_id = cat.category_id
 JOIN courses c ON cat.course_id = c.course_id
-WHERE c.course_id = 1 -- CHANGE to test different course
+WHERE c.course_id = 1
 ORDER BY s.student_id, a.assignment_id;
+
 -- Calculate and insert grades into the grades table
+-- DELETE FROM `grades`;
+-- DELETE FROM `scores`;
+
 INSERT INTO grades (student_id, course_id, score)
 SELECT s.student_id, cat.course_id, 
        ROUND(SUM(sc.score * a.weight / 100), 2) AS score
@@ -353,56 +357,71 @@ WHERE `assignment_id` = 1;
 UPDATE scores
 JOIN students ON scores.student_id = students.student_id
 SET scores.score = scores.score + 2
-WHERE students.last_name LIKE '%Q%' AND scores.assignment_id = 1;
+WHERE students.last_name LIKE '%Q%';
 
- -- COMPUTE GRADE FOR STUDENTS + DROP THE LOWEST SCORES.
-DELIMITER //
+-- CHANGE PERCENTAGES OF CATEGORIES FOR A COURSE -- 
+UPDATE categories
+SET weight = CASE 
+	WHEN category_id = 1 THEN 30.0  -- Specify the new weight for each category
+	WHEN category_id = 2 THEN 40.0
+	WHEN category_id = 3 THEN 30.0
+	ELSE weight  -- Keep the existing weight for other categories
+ END
+WHERE course_id = (SELECT course_id FROM courses WHERE course_name = 'Statistical Theory');
 
-CREATE PROCEDURE ComputeAndDropLowestScores()
-BEGIN
-    -- Create a temporary table to store the row numbers of the lowest scores for each category
-    CREATE TEMPORARY TABLE LowestScores (
-        category_id INT,
-        student_id INT,
-        row_num INT
-    );
-
-    -- Insert the row numbers of the lowest scores into the temporary table
-    INSERT INTO LowestScores (category_id, student_id, row_num)
-    SELECT a.category_id, sc.student_id,
-           ROW_NUMBER() OVER (PARTITION BY a.category_id, sc.student_id ORDER BY sc.score ASC) AS row_num
-    FROM scores sc
-    JOIN assignments a ON sc.assignment_id = a.assignment_id
-    JOIN categories cat ON a.category_id = cat.category_id;
-
-    -- Compute grades for students, excluding the lowest scores for each category
-    SELECT s.student_id, s.first_name, s.last_name, cat.course_id,
-           SUM(sc.score * a.weight / 100) AS total_score
-    FROM students s
-    JOIN scores sc ON s.student_id = sc.student_id
-    JOIN assignments a ON sc.assignment_id = a.assignment_id
-    JOIN categories cat ON a.category_id = cat.category_id
-    JOIN grades g ON s.student_id = g.student_id AND cat.course_id = g.course_id
-    LEFT JOIN LowestScores ls ON a.category_id = ls.category_id AND sc.student_id = ls.student_id
-    WHERE ls.row_num IS NULL  -- Exclude the lowest score for each category
-    GROUP BY s.student_id, s.first_name, s.last_name, cat.course_id;
-
-    -- Drop the temporary table
-    DROP TEMPORARY TABLE LowestScores;
-END//
-
-DELIMITER ;
+SELECT s.student_id, SUM(sc.score * cat.weight / 100) AS NewGrade
+FROM(
+SELECT g.student_id, g.course_id, MAX(g.score) as percentage
+FROM grades g
+JOIN assignments a ON g.course_id = a.course_id
+WHERE g.student_id  = 1
+GROUP BY g.student_id, g.course_id
+) AS bestscore
+JOIN scores sc ON sc.assignment_id = a.assignment_id
+JOIN categories cat ON cat.category_id = a.category_id 
+JOIN students s ON s.student_id = sc.student_id
+GROUP BY s.student_id
 
 
--- INSERT INTO `grades` (`student_id`, `course_id`, `score`) VALUES (1, 1, SUM(sc.score * a.weight / 100));
+INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (2, 1, 'HW 3', 10);
 
--- COMPUTE GRADES FOR STUDENTS -- 
--- SELECT s.student_id, s.first_name, s.last_name, g.course_id,
---        SUM(sc.score * a.weight / 100) AS total_score
--- FROM students s
--- JOIN scores sc ON s.student_id = sc.student_id
--- JOIN assignments a ON sc.assignment_id = a.assignment_id
--- JOIN categories cat ON a.category_id = cat.category_id
--- JOIN grades g ON s.student_id = g.student_id AND g.course_id = cat.course_id
--- GROUP BY s.student_id, s.first_name, g.score, g.course_id;
+-- CREATE PROCEDURE ComputeAndDropLowestScores()
+-- BEGIN
+--     -- Create a temporary table to store the row numbers of the lowest scores for each category
+--     CREATE TEMPORARY TABLE LowestScores (
+--         category_id INT,
+--         student_id INT,
+--         row_num INT
+-- );
 
+--     -- Insert the row numbers of the lowest scores into the temporary table
+--     INSERT INTO LowestScores (category_id, student_id, row_num)
+--     SELECT a.category_id, sc.student_id, 
+--            ROW_NUMBER() OVER (PARTITION BY a.category_id, sc.student_id ORDER BY sc.score ASC) AS row_num
+--     FROM scores sc
+--     JOIN assignments a ON sc.assignment_id = a.assignment_id
+--     JOIN categories cat ON a.category_id = cat.category_id;
+
+--     -- Compute grades for students, excluding the lowest scores for each category
+--     WITH FinalGrades AS (
+--         SELECT s.student_id, s.first_name, s.last_name, cat.course_id,
+--                SUM(sc.score * a.weight / 100) AS total_score
+--         FROM students s
+--         JOIN scores sc ON s.student_id = sc.student_id
+--         JOIN assignments a ON sc.assignment_id = a.assignment_id
+--         JOIN categories cat ON a.category_id = cat.category_id
+--         JOIN grades g ON s.student_id = g.student_id AND cat.course_id = g.course_id
+--         LEFT JOIN LowestScores ls ON a.category_id = ls.category_id AND sc.student_id = ls.student_id
+--         WHERE ls.row_num IS NULL  -- Exclude the lowest score for each category
+--         GROUP BY s.student_id, s.first_name, s.last_name, cat.course_id
+--     )
+
+--     -- Select the final table with the student's total scores after dropping the lowest scores for each category
+--     SELECT *
+--     FROM FinalGrades;
+
+--     -- Drop the temporary table
+--     DROP TEMPORARY TABLE LowestScores;
+-- END//
+
+-- DELIMITER ;
