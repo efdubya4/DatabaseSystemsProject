@@ -369,21 +369,21 @@ SET weight = CASE
  END
 WHERE course_id = (SELECT course_id FROM courses WHERE course_name = 'Statistical Theory');
 
-SELECT s.student_id, SUM(sc.score * cat.weight / 100) AS NewGrade
-FROM(
-SELECT g.student_id, g.course_id, MAX(g.score) as percentage
-FROM grades g
-JOIN assignments a ON g.course_id = a.course_id
-WHERE g.student_id  = 1
-GROUP BY g.student_id, g.course_id
-) AS bestscore
-JOIN scores sc ON sc.assignment_id = a.assignment_id
-JOIN categories cat ON cat.category_id = a.category_id 
-JOIN students s ON s.student_id = sc.student_id
-GROUP BY s.student_id
+-- SELECT s.student_id, SUM(sc.score * cat.weight / 100) AS NewGrade
+-- FROM(
+-- SELECT g.student_id, g.course_id, MAX(g.score) as percentage
+-- FROM grades g
+-- JOIN assignments a ON g.course_id = a.course_id
+-- WHERE g.student_id  = 1
+-- GROUP BY g.student_id, g.course_id
+-- ) AS bestscore
+-- JOIN scores sc ON sc.assignment_id = a.assignment_id
+-- JOIN categories cat ON cat.category_id = a.category_id 
+-- JOIN students s ON s.student_id = sc.student_id
+-- GROUP BY s.student_id
 
 
-INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (2, 1, 'HW 3', 10);
+-- INSERT INTO `assignments` (`category_id`, `course_id`, `name`, `weight`) VALUES (2, 1, 'HW 3', 10);
 
 -- CREATE PROCEDURE ComputeAndDropLowestScores()
 -- BEGIN
