@@ -316,13 +316,6 @@ SELECT MIN(`score`) AS `lowest_score`
 FROM `scores`
 WHERE `assignment_id` = 1;
 
-
-
-select score, weight, student_id, score * weight /100 as grade
-from scores
-join assignments on scores.assignment_id = assignments.assignment_id;
-
-
 -- List all students for a given course (course id=1)
 SELECT s.student_id, s.first_name, s.last_name
 FROM students s
@@ -351,22 +344,16 @@ JOIN assignments a ON sc.assignment_id = a.assignment_id
 JOIN categories cat ON a.category_id = cat.category_id
 GROUP BY s.student_id, cat.course_id;
 
-
-
-
 /*Add 2 points to the score of each student on an assignment*/
-
 UPDATE `scores`
 SET `score` = `score` + 2
 WHERE `assignment_id` = 1;
 
 /* Add 2 points just to those students whose last name contains a ‘Q’  */
-
 UPDATE scores
 JOIN students ON scores.student_id = students.student_id
 SET scores.score = scores.score + 2
 WHERE students.last_name LIKE '%Q%' AND scores.assignment_id = 1;
-
 
  -- COMPUTE GRADE FOR STUDENTS + DROP THE LOWEST SCORES.
 DELIMITER //
@@ -405,9 +392,6 @@ BEGIN
 END//
 
 DELIMITER ;
- 
-
-
 
 
 -- INSERT INTO `grades` (`student_id`, `course_id`, `score`) VALUES (1, 1, SUM(sc.score * a.weight / 100));
