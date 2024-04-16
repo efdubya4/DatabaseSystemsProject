@@ -20,3 +20,4 @@ GOALS:
 USER GUIDE:
 - To start, make sure you have MySQL downloaded
 - Run the script to create the tables and insert the data
+- The script will produce the table and show the average/highest/lowest score
