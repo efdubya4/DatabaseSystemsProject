@@ -1,0 +1,6 @@
+course_id,department,course_number,course_name,semester,year
+1,Statistics,100,"Statistical Theory",Fall,2024
+2,History,101,"Ancient History",Fall,2024
+3,Engineering,102,"Computer Science",Fall,2024
+4,Music,103,Piano,Fall,2024
+5,Mathematics,104,Calculus,Fall,2024
